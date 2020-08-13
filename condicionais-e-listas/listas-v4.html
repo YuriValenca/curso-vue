@@ -1,0 +1,30 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div class="app">
+  <ul>
+    <li v-for="(color, i) in cores">{{ i + 1 }}) {{ color }}</li>
+  </ul>
+  <hr>
+  <span v-for="n in 10">{{ n }}</span v-for="n">
+  <!--esse exemplo mostra que é possivel criar uma lista de número sem que tenha algo definido no data-->
+</div>
+
+<script>
+  new Vue({
+    el: ".app",
+    data: {
+      cores: ["vermelho", "verde", "amarelo", "azul"],
+      pessoas: [
+        { nome: "Ana", idade: 29, peso: 56 },
+        { nome: "Guilherme", idade: 22, peso: 78 },
+      ],
+    },
+  });
+</script>
+
+<style>
+  ul {
+    list-style: none;
+  }
+</style>

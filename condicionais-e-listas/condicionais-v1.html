@@ -1,0 +1,21 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div class="app">
+  <p v-if="logado">Usuário logado: {{ nome }}</p>
+  <!--Dá pra ver, neste caso, que os dois parágrafos são contrários, logo, nao faz sentido manter os dois na tela ao mesmo tempo, ou aparecerá um, ou outro-->
+  <p v-else>Nenhum usuário logado</p>
+  <!--é possivel tambem usar v-if="!logado"-->
+  <!--para o v-if/v-else funcionar, tem que ser um elemento depois do outros, ex.: se o button tivesse entre os dois Ps, não funcionaria-->
+  <button @click="logado = !logado">{{ logado ? 'Sair' : 'Entrar' }}</button>
+</div>
+
+<script>
+  new Vue({
+    el: ".app",
+    data: {
+      nome: "João",
+      logado: false,
+    },
+  });
+</script>

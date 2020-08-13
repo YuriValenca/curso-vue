@@ -1,0 +1,50 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div class="app">
+  <ul>
+    <li v-for="(color, i) in cores">{{ i + 1 }}) {{ color }}</li>
+    <hr>
+    <template v-for="(color, i) in cores">
+      <h1>{{ color }} </h1>
+      <p>{{ i }} </p>
+    </template>
+    <!--se no lugar do template, fosse div, o v-for criaria 4 divs, uma pra cada cor + index-->
+    <hr>
+    <ul class="lista-dif">
+      <li v-for="pessoa in pessoas">{{ pessoa.nome }}</li> <!--retornando um valor do objeto-->
+      <li v-for="pessoa in pessoas">
+        <div v-for="valor in pessoa">  {{ valor }}</div> <!--retornando todos os valores do objeto: SÓ FUNCIONA QUANDO O V-FOR TIVER RODADO O ARRAY-->
+      </li>
+      <li v-for="pessoa in pessoas">
+        <div v-for="(valor, chave) in pessoa">{{ chave }} = {{ valor }}</div> <!--retornando todos os valores do objeto E os nomes dos atributos-->
+      </li>
+      <li v-for="pessoa in pessoas">
+        <div v-for="(valor, chave, index) in pessoa">{{ index + 1 }}) {{ chave }} = {{ valor }}</div> <!--retornando todos os valores do objeto, os nomes dos atriburos E o indice dos valores-->
+      </li>
+    </ul>
+</div>
+<script>
+  new Vue({
+    el: ".app",
+    data: {
+      cores: ["vermelho", "verde", "amarelo", "azul"],
+      pessoas: [
+        { nome: "Ana", idade: 29, peso: 56 },
+        { nome: "Guilherme", idade: 22, peso: 78 },
+      ],
+    },
+  });
+</script>
+
+<style>
+  ul {
+    list-style: none;
+  }
+  h1, p{
+    display: inline;
+  }
+  .lista-dif{
+    list-style:disc
+  }
+</style>

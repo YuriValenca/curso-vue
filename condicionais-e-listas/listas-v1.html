@@ -1,0 +1,22 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div class="app">
+  <ul>
+    <li v-for="cor in cores">{{ cor }}</li>
+    <!--o v-for vai, dinamicamente, repetir as tags com conteudo presente na lista definida no data. a diretiva v-for tem q estar presente na tag q será repetida!! sua sintaxe é: <tag v-for="VAR in NOME_DO_ARRAY>{{ VAR }}</tag>"-->
+  </ul>
+</div>
+
+<script>
+  new Vue({
+    el: ".app",
+    data: {
+      cores: ["vermelho", "verde", "amarelo", "azul"],
+      pessoas: [
+        { nome: "Ana", idade: 29, peso: 56 },
+        { nome: "Guilherme", idade: 22, peso: 78 },
+      ],
+    },
+  });
+</script>

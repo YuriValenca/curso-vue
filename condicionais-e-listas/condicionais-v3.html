@@ -1,0 +1,26 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div class="app">
+  <template v-if="logado">
+    <!--no html final, uma nova tag envolvendo usuario logado e perfil não vai ser criada, justamente pq usamos template para envolvê-las. E, ainda, como essa tag está "junta" àquelas que possuem as diretivas else-if e else, a condição vai continuar acontecendo-->
+    <p>Usuário logado: {{ nome }}</p>
+    <p>Perfil: Admin</p>
+  </template>
+  <!--lembrete, a renderização condicional tira o elemento do html, caso a condição seja falsa, é como se houvesse um "detach", e não um style: hidden-->
+  <p v-else-if="anonimo">Navagando como anonimo</p>
+  <p v-else>Nenhum usuário logado</p>
+  <button @click="logado = !logado">{{ logado ? 'Sair' : 'Entrar' }}</button>
+  <input type="checkbox" v-model="anonimo" />
+</div>
+
+<script>
+  new Vue({
+    el: ".app",
+    data: {
+      nome: "João",
+      logado: false,
+      anonimo: true,
+    },
+  });
+</script>

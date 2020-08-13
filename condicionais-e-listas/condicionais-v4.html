@@ -1,0 +1,29 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div class="app">
+  <template v-if="logado">
+    <p>Usuário logado: {{ nome }}</p>
+    <p>Perfil: Admin</p>
+  </template>
+  <p v-else-if="anonimo">Navagando como anonimo</p>
+  <p v-else>Nenhum usuário logado</p>
+  <button @click="logado = !logado">{{ logado ? 'Sair' : 'Entrar' }}</button>
+  <input type="checkbox" v-model="anonimo" />
+  <hr />
+  <footer v-show="logado">Desenvolvido para você!</footer>
+  <footer v-show="!logado">Desenvolvido para você que é bacano!</footer>
+  <!--diferentemente do v-if, o v-show apenas aplica um style: display: none ao trecho que a diretiva atua, sendo assim, é menos custoso para o framework, porém, em algumas situações, menos seguro-->
+  <!--mais um detalhe é que, diferentemente do v-if, para o uso da condicional, por exemplo logado e !logado, não é necessário que os elementos que contenham essas condições estejam juntos-->
+</div>
+
+<script>
+  new Vue({
+    el: ".app",
+    data: {
+      nome: "João",
+      logado: false,
+      anonimo: true,
+    },
+  });
+</script>
