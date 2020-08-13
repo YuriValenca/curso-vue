@@ -1,0 +1,27 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ titulo }}</p>
+    <p>{{ teste }}</p>
+    <p>{{ saudacao() }}</p>
+    <p>{{ funcion() }}</p>
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            titulo: 'Usando VueJS!',
+            teste: 'Opa'
+        },
+        methods: {
+            saudacao: function(){ //Função e dado nao podem ter o mesmo nome, ex.: caso o nome da função fosse 
+                                  //título, haveria conflito
+                return this.titulo
+            },
+            funcion: function(){
+                return 'To testando'
+            }
+        }
+    })
+</script>

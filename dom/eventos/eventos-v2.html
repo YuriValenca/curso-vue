@@ -1,0 +1,27 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ contador }}</p>
+    <button v-on:click="somar">Somar 1</button> <!--Mesmo nao tendo sido passado, por padrão, é bom passar a variavel event quando acontecer um evento, tal como mouseover, mousemove, etc-->
+    <p v-on:mousemove="posicao">Mouse: {{ x }} e {{ y }}</p>
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            contador: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            somar(){
+                this.contador++;
+            },
+            posicao(event){
+                this.x = event.clientX
+                this.y = event.clientY
+            }
+        }
+    })
+</script>

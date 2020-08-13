@@ -1,0 +1,63 @@
+<script src="https://unpkg.com/vue"></script>
+
+<head>
+  <meta charset="UTF-8" />
+</head>
+<style>
+  .caixas {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .demo {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+  }
+
+  .c1 {
+    background-color: red;
+  }
+
+  .c2 {
+    background-color: green;
+  }
+
+  .c3 {
+    background-color: blue;
+  }
+
+  .girar {
+    transform: rotate(45deg);
+  }
+</style>
+
+<div id="app">
+  <div class="caixas">
+    <div class="demo" :class="estilo1" @click="aplicarC1 = !aplicarC1"></div>
+    <div class="demo" :class="estilo1"></div>
+    <div class="demo" :class="[classeCSS, {girar: aplicarGirar}]"></div>
+    <!--o estilo girar pode ir tanto dentro de classes, como dentro do array do v-bind, porém, no segundo caso, é necessário uso das aspas simples, ou até, passar sem aspas, mas passando o elemento presente no data, mas lembrar que, nesse ultimo caso, tem q passar como objeto, i.e, com {}-->
+  </div>
+  <hr />
+  <input type="text" v-model="classeCSS" />
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      aplicarC1: false,
+      classeCSS: "c1",
+      aplicarGirar: true,
+    },
+    computed: {
+      estilo1() {
+        return {
+          c1: this.aplicarC1,
+          c2: !this.aplicarC1,
+        };
+      },
+    },
+  });
+</script>

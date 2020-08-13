@@ -1,0 +1,20 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ contador }}</p> <!--Uma aplicação do v-once seria, caso ela fosse passada no contador, ele n seria atualizado, pois seria renderizado apenas uma vez-->
+    <button v-on:mouseover="somar">Somar 1</button>
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            contador: 0
+        },
+        methods: {
+            somar(){
+                this.contador++;
+            }
+        }
+    })
+</script>

@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <input type="text" v-on:input="alterarTitulo">
+    <p>{{ titulo }}</p>
+    <p v-once>{{ saudacao() }}</p> <!--A diretiva v-once servirá se uma propriedade nao venha a ser atualizado sempre que houver uma mudança nos dados-->
+    <a href="" v-bind:href="link">Google</a>
+    
+</div>
+
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            titulo: 'Usando VueJS!',
+            link: 'https://www.google.com/'
+        },
+        methods: {
+            saudacao: function(){
+                //this.titulo = 'Bom dia'
+                return this.titulo
+            },
+            alterarTitulo(event) {
+                this.titulo = event.target.value
+            }
+        }
+    })
+</script>

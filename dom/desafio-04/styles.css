@@ -1,0 +1,59 @@
+#efeito {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.destaque {
+  background-color: red;
+  width: 200px !important;
+}
+
+.encolher {
+  background-color: gray;
+  width: 50px !important;
+}
+
+.perigo {
+  background-color: red;
+}
+
+.tronxo {
+  transform: rotate(5deg);
+  font-size: 25px;
+}
+
+.quadrado {
+  width: 100px;
+  height: 100px;
+}
+
+.bacana {
+  background: linear-gradient(
+    124deg,
+    #ff2400,
+    #e81d1d,
+    #e8b71d,
+    #e3e81d,
+    #1de840,
+    #1ddde8,
+    #2b1de8,
+    #dd00f3,
+    #dd00f3
+  );
+  -webkit-animation: rainbow 18s ease infinite;
+  -z-animation: rainbow 18s ease infinite;
+  -o-animation: rainbow 18s ease infinite;
+  animation: rainbow 18s ease infinite;
+}
+
+.barra-progresso {
+  height: 30px;
+  width: 50%;
+  border: 3px solid black;
+}
+
+.progresso {
+  background-color: red;
+  height: 100%;
+}

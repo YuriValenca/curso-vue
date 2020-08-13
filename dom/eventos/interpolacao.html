@@ -1,0 +1,23 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ contador }}</p>
+    <p>{{ 1 + 1 - 100 * 2 }}</p>
+    <p>{{ contador > 10 ? 'Maior que 10' : 'Menor que 10' }}</p>
+    <!-- Valores que possuam operações simples (i.e, sem if else, for, etc), podem ser interpolados no double mustache, sem até nem precisarem ser declarados -->
+    <button v-on:click="somar">Somar 5</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            contador: 0
+        },
+        methods: {
+            somar() {
+                this.contador++
+            }
+        }
+    })
+</script>
