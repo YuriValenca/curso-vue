@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Matador de monstros</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mitr:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jogo">
+        <div class="jogador">
+          <h2>Jogador</h2>
+          <br />
+          <img src="warrior.gif" class="warrior" />
+          <br />
+          <div class="life-bar">
+            <div
+              class="life"
+              :class="{danger: playerLife <= 20}"
+              :style="{width: playerLife + '%'}"
+            ></div>
+          </div>
+          <p>{{ playerLife }}%</p>
+        </div>
+        <div class="monstro">
+          <h2>Monstro</h2>
+          <br />
+          <img src="monster.gif" class="monster" />
+          <br />
+          <div class="life-bar">
+            <div
+              class="life"
+              :class="{danger: monsterLife <= 20}"
+              :style="{width: monsterLife + '%'}"
+            ></div>
+          </div>
+          <p>{{ monsterLife }}%</p>
+        </div>
+      </div>
+
+      <div class="resultado" v-if="endGame">
+        <p v-if="playerLife > 0 && monsterLife <= 0" class="ganhou">
+          Você ganhou!!!
+        </p>
+        <p v-if="monsterLife > 0 && playerLife <= 0" class="perdeu">
+          Você perdeu...
+        </p>
+        <p v-if="playerLife <= 0 && monsterLife <= 0" class="empatou">
+          Deu empate '-'
+        </p>
+      </div>
+
+      <div class="comandos">
+        <div class="plshelp">
+          <template v-if="running">
+            <div class="button-holder">
+              <button class="ataque" @click="atacar">Ataque</button>
+            </div>
+            <div class="button-holder">
+              <button class="spAtaque" @click="spAtk" v-if="cooldownSpAtk==0">
+                Ataque especial
+              </button>
+            </div>
+            <div class="button-holder">
+              <button class="curar" @click="heal" v-if="cooldownHeal==0">
+                Curar
+              </button>
+            </div>
+            <div class="button-holder">
+              <button class="desistir" @click="running = false">
+                Desistir
+              </button>
+            </div>
+          </template>
+          <button v-else @click="startGame" class="iniciarJogo">
+            Iniciar novo jogo
+          </button>
+        </div>
+      </div>
+
+      <div class="log" v-if="logs.length"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
