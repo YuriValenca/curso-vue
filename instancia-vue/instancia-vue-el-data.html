@@ -1,0 +1,24 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+  {{ titulo }}
+  <button @click="alterar">Alterar</button>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      titulo: "Teste1",
+    },
+    methods: {
+      alterar() {
+        this.titulo += "!";
+      },
+    },
+  });
+</script>
+
+<!--o $el representa toda estrutura html que foi definida a partir do seu template, é o elemento html referenciado a partir da dom-->
+<!--o $data representa todos os dados que foram passados na construção da instancia -->

@@ -1,0 +1,26 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+  {{ titulo }} {{ novaInfo }}
+  <button @click="alterar">Alterar</button>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: "#app",
+    data: {
+      titulo: "Teste1",
+    },
+    methods: {
+      alterar() {
+        this.titulo += "!";
+      },
+    },
+  });
+
+  vm.novaInfo = "Teste";
+  console.log(vm.novaInfo);
+</script>
+
+<!--o aviso que aparece durante a execução desse código pede para que seja feita a verificação se novaInfo é uma propriedade reativa, pois a partir do momento que ela é criada fora da instancia Vue, os proxys, os getters and setters reativos e diversas outras funcionalidades deixam de serem aplicadas na variavel-->

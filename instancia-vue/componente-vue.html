@@ -1,0 +1,46 @@
+<meta charset="utf-8" />
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+  <!-- <comp></comp> -->
+  <!-- <div class="comp"></div> -->
+  <comp></comp>
+  <comp></comp>
+  <comp></comp>
+</div>
+
+<script>
+  Vue.component("comp", {
+    template: `
+    <div>
+        <h1>{{ aula }}</h1>
+        <h2>{{ modulo }}</h2>
+        <button @click="alterarAula">Alterar Aula</button>
+        <button @click="alterarmodulo">Alterar Módulo</button>
+    </div>
+    `,
+    data: function () {
+      //Para que o funcionamento do componente ocorra, basta por no data uma função que retorna um objeto composto por tudo aquilo que tinha no data da instancia Vue
+      return {
+        aula: "Aula: Montando instância Vue",
+        modulo: "Modulo: Instancia Vue",
+      };
+    },
+    methods: {
+      alterarAula() {
+        this.aula += "#";
+      },
+      alterarmodulo() {
+        this.modulo += "#";
+      },
+    },
+  });
+
+  const vm = new Vue({
+    el: "#app", //modo padrão de renderizar a página
+    // el: "comp", //nesse caso, o Vue consegue gerar a renderização caso ela seja feita nesse componente personalizado
+    // el: ".comp", //embora a renderização, a atuação do el, seja numa classe, isso nao quer dizer que o vue vai renderizar n vezes a classe, caso ela esteja presente n vezes no html
+
+    // el: "#app",
+  });
+</script>
